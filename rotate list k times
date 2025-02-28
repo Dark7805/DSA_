@@ -1,0 +1,93 @@
+Rotate  list k times
+
+
+public class Main {
+    public static void main(String[] args) {
+       LL l = new LL();
+       l.append(23);
+       l.append(34);
+       l.append(56);
+       l.append(58);
+       l.append(90);
+       
+      l.display();
+      l.rotate(2);
+      l.display();
+     
+    }
+}
+class Node{
+    int data;
+    Node next;
+    public Node (int data){
+        this.data= data;
+        this.next=null;
+    }
+}
+
+class LL{
+    Node head = null;
+    void append(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head= newNode;
+        }else{
+           Node temp = head;
+            while(temp.next!=null){
+                temp= temp.next;
+            }
+            temp.next=newNode;
+        }
+    }
+    void display(){
+      if(head==null){
+          System.out.println("Underflow");
+      }else{
+          Node temp = head;
+          while(temp!=null){
+              System.out.print(temp.data+"->");
+              temp=temp.next;
+          }
+          System.out.println("null");
+      }
+    }
+    void rotate(int k) {
+        if (head == null || k == 0) {
+            return; 
+        }
+
+       
+        Node temp = head;
+        int length = 1;
+        while (temp.next != null) {
+            length++;
+            temp = temp.next;
+        }
+
+       
+        temp.next = head;
+
+       
+        k = k % length;
+
+       
+        int stop = length - k;
+        temp = head;
+
+        for (int i = 1; i < stop; i++) {
+            temp = temp.next;
+        }
+
+       
+        head = temp.next;
+
+       
+        temp.next = null;
+}
+
+    }
+    
+    
+    
+  
+    
