@@ -86,6 +86,22 @@ class LL{
         }
         return true;
     }
+//reverse a linkedlist
+public void reverse(){
+   
+    Node prev=null;
+    Node curr= head;
+    Node nnext = null;
+    
+    while(curr!=null){
+        nnext=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=nnext;
+    }
+    head=prev;
+}
+    
     
    
 }
