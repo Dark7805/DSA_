@@ -1,0 +1,92 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+public class Main {
+    public static void main(String[] args) {
+       LL l = new LL();
+       l.append(23);
+       l.append(34);
+       l.append(56);
+       l.append(58);
+       l.append(90);
+       l.insertAt(2,10);
+      l.display();
+      
+    }
+}
+class Node{
+    int data;
+    Node next;
+    public Node (int data){
+        this.data= data;
+        next=null;
+    }
+}
+
+class LL{
+    Node head = null;
+    void append(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head= newNode;
+        }else{
+           Node temp = head;
+            while(temp.next!=null){
+                temp= temp.next;
+            }
+            temp.next=newNode;
+        }
+    }
+    void display(){
+      if(head==null){
+          System.out.println("Underflow");
+      }else{
+          Node temp = head;
+          while(temp!=null){
+              System.out.print(temp.data+"->");
+              temp=temp.next;
+          }
+          System.out.println("null");
+      }
+    }
+    
+    void insertAt(int data,int pos){
+        int count=0;
+       
+        if(!check(pos)){
+            System.out.println("The position does not exist");
+            return;
+        }
+        Node newNode= new Node( data);
+        if(head==null){
+            head= newNode;
+        }else{
+           
+            Node temp = head;
+            while(count!=pos-1 ){
+               count++;
+               temp=temp.next;
+            }
+           
+            newNode.next=temp.next;
+            temp.next=newNode;
+            System.out.println(count);
+        }
+    }
+    public boolean check(int pos){
+        Node temp=head;
+        int i=0;
+        while(i++<pos){
+            if(temp==null){
+              //  System.out.println("Jaya badmoshi nhi mitr");
+                return false ;
+            }
+           temp=temp.next; 
+            
+        }
+        return true;
+    }
+    
+   
+}
+
